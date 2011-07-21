@@ -57,9 +57,13 @@ if (typeof PhoneGap !== "undefined") {
     }
 
     DrupalPlugin.prototype.nodeSave = function(node, successCallback, failureCallback) {
-        console.log("Node saving");
         return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "nodeSave", [{node: node}]);
     }
+
+    DrupalPlugin.prototype.nodeDelete = function(nid, successCallback, failureCallback) {
+        return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "nodeDelete", [{nid: nid}]);
+    }
+
 
     DrupalPlugin.prototype.viewGet = function(viewName, successCallback, failureCallback) {
         return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "viewGet", [{viewName: viewName}]);

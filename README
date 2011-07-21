@@ -54,8 +54,9 @@ Version 0.1
 user.login
 user.logout
 system.connect
-node.get
+node.get (individual node)
 node.save
+node.delete
 views.get
 
 * Adding more methods should be pretty easy.
