@@ -14,7 +14,6 @@
 
 #import "DIOSUser.h"
 #import "DIOSConnect.h"
-#import "DIOSNode.h"
 
 
 
@@ -34,5 +33,9 @@
 
 //node methods
 - (void) nodeGet:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+
+
+//view methods
+- (void) viewGet:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 @end

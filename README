@@ -4,8 +4,8 @@ Installation Notes
 ==================
 * Tested with PhoneGap 0.9.6 and XCode 4
 * Create a new PhoneGap Application from XCode 4 to get started
-* Follow directions under 0.1 to set up XCode project - I would like to make this much, much better!
-* Add DrupalPlugin.m and DrupalPlugin.h to your XCode project's plugins directory
+* Follow directions under 0.1 to set up XCode Phonegap project - I would like to make this much, much better!
+* Add DrupalPlugin.m and DrupalPlugin.h to your XCode PhoneGap project's plugins directory
 * Add the javascript file to your XCode project's www directory
 * Reference the javascript file in your index.html
 * Add DrupalPlugin to your PhoneGap.plist configuration file's list of plugins. Select the last plugin in the list (there are 14 out of the box) and then click the Plus sign. 
@@ -25,6 +25,7 @@ function onDeviceReady()
 function onDeviceReady()
 {
         window.plugins.drupal.openAnonymousSession(successCallback,failureCallback);
+        window.plugins.drupal.viewGet("frontpage",frontPageSuccess,failureCallback);
 }
 
 Version 0.1
@@ -41,6 +42,9 @@ Version 0.1
 * Currently supported methods from Drupal Services:
 user.login
 user.logout
+system.connect
+node.get
+views.get
 
 * Adding more methods should be pretty easy.
 

@@ -6,6 +6,9 @@
 
 
 #import "DrupalPlugin.h"
+#import "DIOSNode.h"
+#import "DIOSViews.h"
+
 
 @implementation DrupalPlugin
 
@@ -85,6 +88,19 @@
     PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:node];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [node release];
+}
+
+
+- (void) viewGet:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    NSString* callbackId = [arguments objectAtIndex:0];
+    
+    DIOSViews *diosViews = [[DIOSViews alloc] initWithSession:self.currentSession];
+    NSArray* view = (NSArray*) [diosViews viewsGet:[options objectForKey:@"viewName"]];
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:view,@"view", nil];
+    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:dict];
+    [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
+    [dict release];
+    [view release];
 }
 
 @end

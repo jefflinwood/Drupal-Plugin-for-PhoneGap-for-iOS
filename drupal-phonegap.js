@@ -56,7 +56,9 @@ if (typeof PhoneGap !== "undefined") {
         return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "nodeGet", [{nid: nid}]);
     }
 
-
+    DrupalPlugin.prototype.viewGet = function(viewName, successCallback, failureCallback) {
+        return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "viewGet", [{viewName: viewName}]);
+    }
 
     PhoneGap.addConstructor(function() 
     {
