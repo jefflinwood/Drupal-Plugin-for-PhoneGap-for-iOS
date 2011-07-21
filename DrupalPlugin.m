@@ -83,11 +83,27 @@
     NSString* callbackId = [arguments objectAtIndex:0];
     
     DIOSNode *diosNode = [[DIOSNode alloc] initWithSession:self.currentSession];
-    NSDictionary* node = [diosNode nodeGet:[options objectForKey:@"nid"]];
+    NSDictionary *node = [diosNode nodeGet:[options objectForKey:@"nid"]];
     
     PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:node];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [node release];
+}
+
+- (void) nodeSave:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    NSLog(@"Saving Node");
+    NSString* callbackId = [arguments objectAtIndex:0];
+    
+    DIOSNode *diosNode = [[DIOSNode alloc] initWithSession:self.currentSession];
+    NSMutableDictionary *node = (NSMutableDictionary*) [options objectForKey:@"node"];
+    NSDictionary *result = [diosNode nodeSave:node];
+    NSLog(@"Results - %@",result);
+    
+    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:result];
+    [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
+    [result release];    
+    
+    
 }
 
 
