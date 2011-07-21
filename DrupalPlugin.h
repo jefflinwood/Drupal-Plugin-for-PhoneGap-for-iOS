@@ -35,6 +35,7 @@
 - (void) nodeGet:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void) nodeSave:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 - (void) nodeDelete:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
+- (void) nodeGetIndex:(NSMutableArray*)arguments withDict:(NSMutableDictionary*)options;
 
 
 //view methods

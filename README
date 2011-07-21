@@ -54,7 +54,7 @@ Version 0.1
 user.login
 user.logout
 system.connect
-node.get (individual node)
+node.get (individual node and node index)
 node.save
 node.delete
 views.get

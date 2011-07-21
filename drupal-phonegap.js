@@ -64,6 +64,11 @@ if (typeof PhoneGap !== "undefined") {
         return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "nodeDelete", [{nid: nid}]);
     }
 
+    DrupalPlugin.prototype.nodeGetIndex = function(successCallback, failureCallback) {
+        return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "nodeGetIndex", []);
+    }
+
+
 
     DrupalPlugin.prototype.viewGet = function(viewName, successCallback, failureCallback) {
         return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "viewGet", [{viewName: viewName}]);

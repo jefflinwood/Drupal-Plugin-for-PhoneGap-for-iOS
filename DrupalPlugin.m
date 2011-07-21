@@ -113,6 +113,16 @@
     [result release];    
 }
 
+- (void) nodeGetIndex:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    NSString* callbackId = [arguments objectAtIndex:0];
+    
+    DIOSNode *diosNode = [[DIOSNode alloc] initWithSession:self.currentSession];
+    NSMutableDictionary* dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[diosNode nodeGetIndex],@"nodes", nil];
+    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:dict];
+    [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
+    [dict release];
+}
+
 - (void) viewGet:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
     NSString* callbackId = [arguments objectAtIndex:0];
     
