@@ -74,7 +74,9 @@ if (typeof PhoneGap !== "undefined") {
         return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "viewGet", [{viewName: viewName}]);
     }
 
-
+    DrupalPlugin.prototype.fileSave = function(file, successCallback, failureCallback) {
+        return PhoneGap.exec(successCallback, failureCallback, "DrupalPlugin", "fileSave", [{file: file}]);
+    }
 
     PhoneGap.addConstructor(function() 
     {

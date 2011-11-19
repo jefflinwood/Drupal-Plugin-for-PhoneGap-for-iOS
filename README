@@ -46,7 +46,7 @@ function onDeviceReady()
         window.plugins.drupal.viewGet("frontpage",frontPageSuccess,failureCallback);
 }
 
-Version 0.2
+Version 0.3
 ===========
 * Currently the plugin only supports a connection to one Drupal site per app
 
@@ -58,6 +58,7 @@ node.get (individual node and node index)
 node.save
 node.delete
 views.get
+file.save
 
 * Adding more methods should be pretty easy.
 

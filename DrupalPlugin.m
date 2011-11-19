@@ -8,6 +8,7 @@
 #import "DrupalPlugin.h"
 #import "DIOSNode.h"
 #import "DIOSViews.h"
+#import "DIOSFile.h"
 
 
 @implementation DrupalPlugin
@@ -43,6 +44,8 @@
 
 
 - (void) login:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    NSLog(@"Logging in username: %@", [options objectForKey:@"username"]);
+    
     NSString* callbackId = [arguments objectAtIndex:0];
 
 	self.currentSession = [[[DIOSConnect alloc] init] autorelease];
@@ -133,6 +136,18 @@
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [dict release];
     [view release];
+}
+
+- (void) fileSave:(NSMutableArray *)arguments withDict:(NSMutableDictionary *)options {
+    NSString* callbackId = [arguments objectAtIndex:0];
+    
+    DIOSFile *diosFile = [[DIOSFile alloc] initWithSession:self.currentSession];
+    NSMutableDictionary *file = (NSMutableDictionary*) [options objectForKey:@"file"];
+    NSDictionary *result = [diosFile fileSave:file];
+    
+    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:result];
+    [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
+    [result release];    
 }
 
 @end
