@@ -33,10 +33,10 @@
     self.currentUser = nil;
     
     if ([self.currentSession connResult]) {
-        PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:[self.currentSession connResult]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self.currentSession connResult]];
         [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     } else {
-        PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:[self.currentSession connResult]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[self.currentSession connResult]];
         [super writeJavascript:[pluginResult toErrorCallbackString:callbackId]];        
     }
 }
@@ -55,10 +55,10 @@
     //if the login was successful (we can check for a uid on the connection result user), set the current user on the Drupal plugin
     if ([[[user connResult] objectForKey:@"user"] objectForKey:@"uid"]) {
         self.currentUser = user;
-        PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:[user connResult]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[user connResult]];
         [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     } else {
-        PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:[user connResult]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[user connResult]];
         [super writeJavascript:[pluginResult toErrorCallbackString:callbackId]];        
     }
     [user release]; 
@@ -73,10 +73,10 @@
     
     if ([user connResult]) {
         self.currentUser = user;
-        PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:[user connResult]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[user connResult]];
         [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     } else {
-        PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:[user connResult]];
+        CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:[user connResult]];
         [super writeJavascript:[pluginResult toErrorCallbackString:callbackId]];        
     }
     [user release]; 
@@ -88,7 +88,7 @@
     DIOSNode *diosNode = [[DIOSNode alloc] initWithSession:self.currentSession];
     NSDictionary *node = [diosNode nodeGet:[options objectForKey:@"nid"]];
     
-    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:node];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:node];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [node release];
 }
@@ -100,7 +100,7 @@
     NSMutableDictionary *node = (NSMutableDictionary*) [options objectForKey:@"node"];
     NSDictionary *result = [diosNode nodeSave:node];
     
-    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:result];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [result release];    
 }
@@ -111,7 +111,7 @@
     DIOSNode *diosNode = [[DIOSNode alloc] initWithSession:self.currentSession];
     NSDictionary *result = [diosNode nodeDelete:[options objectForKey:@"nid"]];
     
-    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:result];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [result release];    
 }
@@ -121,7 +121,7 @@
     
     DIOSNode *diosNode = [[DIOSNode alloc] initWithSession:self.currentSession];
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:[diosNode nodeGetIndex],@"nodes", nil];
-    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:dict];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dict];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [dict release];
 }
@@ -132,7 +132,7 @@
     DIOSViews *diosViews = [[DIOSViews alloc] initWithSession:self.currentSession];
     NSArray* view = (NSArray*) [diosViews viewsGet:[options objectForKey:@"viewName"]];
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] initWithObjectsAndKeys:view,@"view", nil];
-    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:dict];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:dict];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [dict release];
     [view release];
@@ -145,7 +145,7 @@
     NSMutableDictionary *file = (NSMutableDictionary*) [options objectForKey:@"file"];
     NSDictionary *result = [diosFile fileSave:file];
     
-    PluginResult *pluginResult = [PluginResult resultWithStatus:PGCommandStatus_OK messageAsDictionary:result];
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:result];
     [super writeJavascript:[pluginResult toSuccessCallbackString:callbackId]];        
     [result release];    
 }

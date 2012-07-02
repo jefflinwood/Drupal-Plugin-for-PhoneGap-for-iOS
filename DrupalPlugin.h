@@ -6,10 +6,10 @@
 
 #import <Foundation/Foundation.h>
 #import <Foundation/Foundation.h>
-#ifdef PHONEGAP_FRAMEWORK
-#import <PhoneGap/PGPlugin.h>
+#ifdef CORDOVA_FRAMEWORK
+#import <CORDOVA/CDVPlugin.h>
 #else
-#import "PGPlugin.h"
+#import "CDVPlugin.h"
 #endif
 
 #import "DIOSUser.h"
@@ -17,7 +17,7 @@
 
 
 
-@interface DrupalPlugin : PGPlugin {
+@interface DrupalPlugin : CDVPlugin {
     DIOSUser *currentUser;
     DIOSConnect *currentSession;
     
