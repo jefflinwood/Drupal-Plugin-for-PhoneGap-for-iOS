@@ -54,14 +54,14 @@ Version 0.3
 ===========
 * Currently the plugin only supports a connection to one Drupal site per app
 * Currently supported methods from Drupal Services:
-** user.login
-** user.logout
-** system.connect
-** node.get (individual node and node index)
-** node.save
-** node.delete
-** views.get
-** file.save
+	* `user.login`
+	* `user.logout`
+	* `system.connect`
+	* `node.get` (individual node and node index)
+	* `node.save`
+	* `node.delete`
+	* `views.get`
+	* `file.save`
 
 * Adding more methods should be pretty easy.
 
