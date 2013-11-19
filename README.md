@@ -2,6 +2,7 @@ Notes on using the Drupal PhoneGap Plugin for iOS
 
 Installation Notes
 ==================
+
 * Tested with PhoneGap 1.1.0 and XCode 4.2
 * Create a new PhoneGap Application from XCode 4.2 to get started
 * Add my fork of the ASIHTTPRequest (git://github.com/jefflinwood/asi-http-request.git) to your XCode Project (but only the Classes folder). You can add it as a submodule - git submodule add git://github.com/jefflinwood/asi-http-request.git DrupalPhoneGapApp/Classes/asi-http-request
@@ -21,6 +22,7 @@ Installation Notes
 
 Sample Code
 ==================
+```js
 //authenticated user
 function onDeviceReady()
 {
@@ -45,20 +47,21 @@ function onDeviceReady()
         window.plugins.drupal.openAnonymousSession(successCallback,failureCallback);
         window.plugins.drupal.viewGet("frontpage",frontPageSuccess,failureCallback);
 }
+```
 
 Version 0.3
+
 ===========
 * Currently the plugin only supports a connection to one Drupal site per app
-
 * Currently supported methods from Drupal Services:
-user.login
-user.logout
-system.connect
-node.get (individual node and node index)
-node.save
-node.delete
-views.get
-file.save
+** user.login
+** user.logout
+** system.connect
+** node.get (individual node and node index)
+** node.save
+** node.delete
+** views.get
+** file.save
 
 * Adding more methods should be pretty easy.
 
